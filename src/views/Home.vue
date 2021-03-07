@@ -1,18 +1,28 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>
+    <secertary-visits v-if="auth" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import SecertaryVisits from "@/components/secertary/Visits";
 export default {
   name: "Home",
   components: {
-    HelloWorld
+    SecertaryVisits
+  },
+  data() {
+    return {};
+  },
+  computed: {
+    auth() {
+      return this.$store.state.auth.user;
+    },
+    isClient() {
+      return this.auth && this.auth.roles.indexOf("client") !== -1;
+    }
   }
 };
 </script>
+
+<style lang="css" scoped></style>
