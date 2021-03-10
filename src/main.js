@@ -9,6 +9,7 @@ import moment from "./plugins/moment";
 import lodash from "./plugins/lodash";
 import VueSocketIOExt from "vue-socket.io-extended";
 import { io } from "socket.io-client";
+import i18n from "./i18n";
 
 const serverUrl = "http://localhost:6070";
 const socket = io(serverUrl, {
@@ -31,5 +32,6 @@ window.App = new Vue({
   router,
   store,
   vuetify,
+  i18n,
   render: h => h(App)
 }).$mount("#app");

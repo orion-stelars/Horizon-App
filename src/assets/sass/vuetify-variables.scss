@@ -1,0 +1,34 @@
+// font
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo/Cairo-Regular.ttf");
+  font-weight: 250;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo/Cairo-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo/Cairo-BoldItalic.ttf");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo/Cairo-LightItalic.ttf");
+  font-weight: light;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo/Cairo-Light.ttf");
+  font-weight: light;
+  font-style: normal;
+}
+$font-family: 'Cairo';
+$body-font-family: 'Cairo' !important;
+@import '~vuetify/src/styles/styles.sass';

@@ -1,12 +1,12 @@
 <template>
   <div>
     <v-btn color="primary" outlined depressed large @click="toggleDialog(true)">
-      Add Visit
+      {{ $t("Add Visit") }}
       <v-icon>mdi-plus</v-icon>
     </v-btn>
     <v-dialog v-model="showDialog" closable width="700">
       <v-card>
-        <v-card-title>Add Visit</v-card-title>
+        <v-card-title>{{ $t("Add Visit") }}</v-card-title>
         <v-card-text>
           <v-form
             ref="formRef"
@@ -19,21 +19,21 @@
               class="my-5 mx-1"
             >
               <v-card-title>
-                Visitor {{ v + 1 }}
+                {{ $t("Visitor") }} #{{ v + 1 }}
                 <v-spacer />
                 <v-btn
                   v-if="v > 0"
                   color="error"
                   outlined
                   @click="removeVisitor(v)"
-                  >Remove Visitor</v-btn
+                  >{{ $t("Remove Visitor") }}</v-btn
                 >
               </v-card-title>
               <v-card-text>
                 <v-text-field
                   :rules="rules.required"
                   v-model="visitor.name"
-                  placeholder="Visitor Name"
+                  :placeholder="$t('Visitor Name')"
                   append-icon="mdi-account"
                   outlined
                   dense
@@ -42,8 +42,8 @@
                 <v-text-field
                   :rules="rules.required"
                   v-model="visitor.company"
-                  placeholder="Visitor Company"
-                  append-icon="mdi-account"
+                  :placeholder="$t('Visitor Company')"
+                  append-icon="mdi-domain"
                   outlined
                   dense
                 />
@@ -51,8 +51,8 @@
                 <v-text-field
                   :rules="rules.required"
                   v-model="visitor.job"
-                  placeholder="Visitor Job"
-                  append-icon="mdi-account"
+                  :placeholder="$t('Visitor Job')"
+                  append-icon="mdi-account-tie"
                   outlined
                   dense
                 />
@@ -61,7 +61,7 @@
             <v-row justify="end">
               <v-col cols="auto">
                 <v-btn text color="primary" @click="addVisitor"
-                  >Add Visitor <v-icon>mdi-plus</v-icon></v-btn
+                  >{{ $t("Add Company") }} <v-icon>mdi-plus</v-icon></v-btn
                 >
               </v-col>
             </v-row>
@@ -69,9 +69,10 @@
             <v-textarea
               :rules="rules.required"
               v-model="input.reason"
-              placeholder="Reason"
+              :placeholder="$t('Reason')"
               outlined
               dense
+              @keyup.enter="submit"
             />
           </v-form>
         </v-card-text>
@@ -84,7 +85,7 @@
             @click="toggleDialog"
             depressed
             large
-            >Cancel</v-btn
+            >{{ $t("Cancel") }}</v-btn
           >
           <v-btn
             :loading="isLoading"
@@ -93,7 +94,7 @@
             depressed
             large
             @click="submit"
-            >Submit</v-btn
+            >{{ $t("Submit") }}</v-btn
           >
         </v-card-actions>
       </v-card>
@@ -199,12 +200,54 @@ export default {
         .catch(err => {
           this.isLoading = false;
           if (err.response.status === 400) {
-            this.error = "Invalid Input";
-          } else this.error = "Something went wrong, please try again later.";
+            this.error = this.$t("Invalid Input");
+          } else this.error = this.$t("somethingWrong");
         });
     }
   }
 };
 </script>
+<i18n>
+{
+  "en": {
+    "Schedule Visit": "Schedule Visit",
+    "Cancel": "Cancel",
+    "Schedule": "Schedule",
+    "Visitor Name": "Visitor Name",
+    "Visitor": "Visitor",
+    "Visitor Company": "Visitor Company",
+    "Visitor Job": "Visitor Job",
+    "Reason": "Reason",
+    "Date": "Date",
+    "Created By": "Created By",
+    "Actions": "Actions",
+    "Leave": "Leave",
+    "Add Visit": "Add Visit",
+    "Add Visitor": "Add Visitor",
+    "Add Company": "Add Company",
+    "Invalid Input": "Invalid Input",
+    "Remove Visitor": "Remove Visitor"
 
+  },
+  "ar": {
+    "Schedule Visit": "تأجيل الزيارة",
+    "Cancel": "الغاء",
+    "Schedule": "تأجيل",
+    "Visitor Name": "اسم الزائر",
+    "Visitor": "زائر",
+    "Visitor Company": "الجهة",
+    "Visitor Job": "الوظيفة",
+    "Reason": "سبب الزيارة",
+    "Date": "التاريخ",
+    "Created By": "المسجل",
+    "Actions": "الإجرائات",
+    "Leave": "مغادرة",
+    "Add Visit": "اضافة زيارة",
+    "Add Visitor": "اضافة زائر",
+    "Invalid Input": "البيانات غير صحيحة",
+    "Remove Visitor": "ازالة المرافق",
+    "Add Company": "اضافة مرافق"
+  }
+}
+</i18n>
 <style lang="css" scoped></style>

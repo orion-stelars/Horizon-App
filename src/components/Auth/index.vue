@@ -1,9 +1,9 @@
 <template>
   <div>
     <v-btn v-if="auth" @click="logout" outlined>
-      {{ auth.name }} | Logout
+      {{ auth.name }} | {{ $t("Logout") }}
     </v-btn>
-    <v-btn v-else outlined @click="toggleDialog">{{ mode }}</v-btn>
+    <v-btn v-else outlined @click="toggleDialog">{{ $t(mode) }}</v-btn>
     <v-dialog v-if="!auth" v-model="showDialog" closable width="700">
       <login
         v-if="mode === 'login'"
@@ -26,10 +26,10 @@
       bottom
       app
     >
-      <span v-if="auth">Welcome {{ auth.name }}</span>
+      <span v-if="auth">{{ $t("Welcome") }} {{ auth.name }}</span>
       <template v-slot:action="{ attrs }">
         <v-btn text v-bind="attrs" @click="successMessage = false">
-          Close
+          {{ $t("Close") }}
         </v-btn>
       </template>
     </v-snackbar>
@@ -92,5 +92,10 @@ export default {
   }
 };
 </script>
-
+<i18n>
+  {
+    "en": {},
+    "ar": {}
+  }
+</i18n>
 <style lang="css" scoped></style>

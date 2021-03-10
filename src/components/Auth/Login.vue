@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-card-title>Login</v-card-title>
+    <v-card-title>{{ $t("Login") }}</v-card-title>
     <v-card-text>
       <v-row>
         <v-form ref="formRef" v-model="isValid" style="width: 100%">
@@ -10,7 +10,7 @@
               :rules="rules.email"
               append-icon="mdi-email"
               type="email"
-              placeholder="Email Address"
+              :placeholder="$t('email')"
               outlined
               @keydown.enter="submit"
             />
@@ -20,7 +20,7 @@
               v-model="input.password"
               :rules="rules.password"
               append-icon="mdi-lock"
-              placeholder="Password"
+              :placeholder="$t('password')"
               type="password"
               outlined
               @keydown.enter="submit"
@@ -28,7 +28,7 @@
           </v-col>
           <v-col class="py-0" cols="12">
             <v-btn text @click="changeMood">
-              Create a new account
+              {{ $t("create an account") }}
             </v-btn>
           </v-col>
         </v-form>
@@ -37,23 +37,23 @@
         {{ error }}
         <template v-slot:action="{ attrs }">
           <v-btn text v-bind="attrs" @click="hasError = false">
-            Close
+            {{ $t("Close") }}
           </v-btn>
         </template>
       </v-snackbar>
     </v-card-text>
     <v-card-actions>
       <v-spacer />
-      <v-btn color="error" large depressed outlined @click="$emit('cancel')"
-        >Cancel</v-btn
-      >
+      <v-btn color="error" large depressed outlined @click="$emit('cancel')">{{
+        $t("Cancel")
+      }}</v-btn>
       <v-btn
         :loading="isLoading"
         color="primary"
         large
         depressed
         @click="submit"
-        >Login</v-btn
+        >{{ $t("Login") }}</v-btn
       >
     </v-card-actions>
   </v-card>
@@ -76,13 +76,14 @@ export default {
       isLoading: false,
       rules: {
         password: [
-          v => !!v || "password is required",
+          v => !!v || this.$t("password is required"),
           v =>
-            (v && v.length >= 8) || "password must be greater than 8 characters"
+            (v && v.length >= 8) ||
+            this.$t("password must be greater than 8 characters")
         ],
         email: [
-          v => !!v || "email is required",
-          v => /.+@.+\..+/.test(v) || "email must be valid"
+          v => !!v || this.$t("email is required"),
+          v => /.+@.+\..+/.test(v) || this.$t("email must be valid")
         ]
       }
     };
@@ -107,12 +108,13 @@ export default {
           this.isLoading = false;
           this.$store.dispatch("auth/setUser", res.data);
           this.$emit("success");
+          this.$socket.client.connect();
         })
         .catch(err => {
           this.isLoading = false;
           if (err.response.status === 400) {
-            this.error = "Invalid email or password";
-          } else this.error = "Something went wrong, please try again later.";
+            this.error = this.$t("Invalid email or password");
+          } else this.error = this.$t("somethingWrong");
           this.hasError = true;
         });
     }

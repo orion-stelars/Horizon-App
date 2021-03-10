@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-card-title>Register</v-card-title>
+    <v-card-title>{{ $t("Register") }}</v-card-title>
     <v-card-text>
       <v-row>
         <v-form ref="formRef" v-model="isValid" style="width: 100%">
@@ -9,7 +9,7 @@
               v-model="input.name"
               :rules="rules.name"
               append-icon="mdi-account"
-              placeholder="Full Name"
+              :placeholder="$t('name')"
               outlined
               @keydown.enter="submit"
             />
@@ -21,7 +21,7 @@
               :loading="isEmailLoading"
               append-icon="mdi-email"
               type="email"
-              placeholder="Email Address"
+              :placeholder="$t('email')"
               outlined
               @keydown.enter="submit"
               @keydown="validateEmail"
@@ -32,7 +32,7 @@
               v-model="input.password"
               :rules="rules.password"
               append-icon="mdi-lock"
-              placeholder="Password"
+              :placeholder="$t('password')"
               type="password"
               outlined
               @keydown.enter="submit"
@@ -43,7 +43,7 @@
               v-model="confirmPassword"
               :rules="rules.confirmPassword"
               append-icon="mdi-lock"
-              placeholder="Confirm Password"
+              :placeholder="$t('confirm password')"
               type="password"
               outlined
               @keyup.enter="submit"
@@ -51,7 +51,7 @@
           </v-col>
           <v-col class="py-0" cols="12">
             <v-btn text @click="changeMood">
-              Already have an account? Login
+              {{ $t("already have an account?") }} {{ $t("Login") }}
             </v-btn>
           </v-col>
         </v-form>
@@ -60,23 +60,23 @@
         {{ error }}
         <template v-slot:action="{ attrs }">
           <v-btn text v-bind="attrs" @click="hasError = false">
-            Close
+            {{ $t("Close") }}
           </v-btn>
         </template>
       </v-snackbar>
     </v-card-text>
     <v-card-actions>
       <v-spacer />
-      <v-btn color="error" large depressed outlined @click="$emit('cancel')"
-        >Cancel</v-btn
-      >
+      <v-btn color="error" large depressed outlined @click="$emit('cancel')">{{
+        $t("Cancel")
+      }}</v-btn>
       <v-btn
         :loading="isLoading"
         color="primary"
         large
         depressed
         @click="submit"
-        >Register</v-btn
+        >{{ $t("Register") }}</v-btn
       >
     </v-card-actions>
   </v-card>
@@ -106,25 +106,29 @@ export default {
     rules() {
       return {
         password: [
-          v => !!v || "Password is required",
-          v =>
-            (v && v.length >= 8) || "Password must be greater than 8 characters"
-        ],
-        confirmPassword: [
-          v => !!v || "Password is required",
+          v => !!v || this.$t("password is required"),
           v =>
             (v && v.length >= 8) ||
-            "Password must be greater than 8 characters",
-          v => v === this.input.password || "Passwords must be identical"
+            this.$t("password must be greater than 8 characters")
+        ],
+        confirmPassword: [
+          v => !!v || this.$t("password is required"),
+          v =>
+            (v && v.length >= 8) ||
+            this.$t("password must be greater than 8 characters"),
+          v =>
+            v === this.input.password || this.$t("passwords must be identical")
         ],
         name: [
-          v => !!v || "Name is required",
-          v => (v && v.length >= 2) || "Name must be greater than 2 characters"
+          v => !!v || this.$t("name is required"),
+          v =>
+            (v && v.length >= 5) ||
+            this.$t("name must be greater than 5 characters")
         ],
         email: [
-          v => !!v || "Email is required",
-          v => /.+@.+\..+/.test(v) || "email must be valid",
-          () => this.isValidEmail || "This Email Already Exists"
+          v => !!v || this.$t("email is required"),
+          v => /.+@.+\..+/.test(v) || this.$t("email must be valid"),
+          () => this.isValidEmail || this.$t("This Email Already Exists")
         ]
       };
     }
@@ -169,17 +173,33 @@ export default {
           this.isLoading = false;
           this.$store.dispatch("auth/setUser", res.data);
           this.$emit("success");
+          this.$socket.client.connect();
         })
         .catch(err => {
           this.isLoading = false;
           if (err.response.status === 400) {
-            this.error = "Invalid email or password";
-          } else this.error = "Something went wrong, please try again later.";
+            this.error = this.$t("Invalid email or password");
+          } else this.error = this.$t("somethingWrong");
           this.hasError = true;
         });
     }
   }
 };
 </script>
-
+<i18n>
+  {
+    "en": {
+     "confirm password": "Confirm Password",
+     "passwords must be identical": "Passwords must be identical",
+     "name must be greater than 5 characters": "Name must be greater than 5 characters",
+     "This Email Already Exists": "This Email Already Exists"
+   },
+   "ar": {
+      "confirm password": "تاكيد كلمة المرور",
+      "passwords must be identical": "كلمات المرور يجب ان تكون متطابقه",
+      "name must be greater than 5 characters": "الاسم لابد ان يزيد عم ٥ حروف",
+      "This Email Already Exists": "هذا البريد الالكتروني موجود بالفعل"
+    }
+  }
+</i18n>
 <style lang="css" scoped></style>
