@@ -19,8 +19,9 @@
     </v-app-bar>
 
     <v-main>
-      <router-view />
-      <v-container v-if="$socket.connected && auth">
+      <host v-model="host" />
+      <router-view v-if="host" />
+      <v-container v-if="host && $socket.connected && auth">
         <v-row justify="end">
           <v-col cols="12" lg="3" md="4">
             <v-card>
@@ -92,6 +93,7 @@
 
 <script>
 import Auth from "@/components/Auth";
+import Host from "@/components/Host";
 import Notifications from "@/components/common/notifications";
 const defaultLang = process.env.VUE_APP_I18N_LOCALE;
 export default {
@@ -99,7 +101,8 @@ export default {
 
   components: {
     Auth,
-    Notifications
+    Notifications,
+    Host
   },
 
   data() {
@@ -109,7 +112,8 @@ export default {
         { key: "ar", label: "العربية", rtl: true, moment: "ar-sa" }
       ],
       activeUsers: {},
-      locale: defaultLang
+      locale: defaultLang,
+      host: null
     };
   },
   mounted() {

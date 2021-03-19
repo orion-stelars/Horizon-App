@@ -11,7 +11,7 @@ import VueSocketIOExt from "vue-socket.io-extended";
 import { io } from "socket.io-client";
 import i18n from "./i18n";
 
-const serverUrl = "http://localhost:6070";
+const serverUrl = localStorage.getItem("host");
 const socket = io(serverUrl, {
   reconnection: true,
   reconnectionDelay: 500,
