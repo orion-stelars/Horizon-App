@@ -77,5 +77,3 @@ if (isDevelopment) {
     });
   }
 }
-
-require("./api");
