@@ -10,7 +10,7 @@
           transition="scale-transition"
           width="65"
         />
-        <span class="title">إدارة التجنيد و التعبئة</span>
+        <span class="font-weight-bold cairo-font">إدارة التجنيد و التعبئة</span>
       </div>
 
       <v-spacer></v-spacer>
@@ -193,86 +193,88 @@ export default {
   }
 </i18n>
 <style lang="scss">
-// // font
-// @font-face {
-//   font-family: "Cairo";
-//   src: url("/fonts/Cairo/Cairo-Regular.ttf");
-//   font-weight: 250;
-//   font-style: normal;
-// }
-// @font-face {
-//   font-family: "Cairo";
-//   src: url("/fonts/Cairo/Cairo-Bold.ttf");
-//   font-weight: bold;
-//   font-style: normal;
-// }
-// @font-face {
-//   font-family: "Cairo";
-//   src: url("/fonts/Cairo/Cairo-BoldItalic.ttf");
-//   font-weight: bold;
-//   font-style: italic;
-// }
-// @font-face {
-//   font-family: "Cairo";
-//   src: url("/fonts/Cairo/Cairo-LightItalic.ttf");
-//   font-weight: light;
-//   font-style: italic;
-// }
-// @font-face {
-//   font-family: "Cairo";
-//   src: url("/fonts/Cairo/Cairo-Light.ttf");
-//   font-weight: light;
-//   font-style: normal;
-// }
-// html,
-// body,
-// p,
-// h1,
-// h2,
-// h3,
-// h4,
-// h5,
-// h6,
-// span,
-// li,
-// button,
-// div {
-//   font-family: "Cairo", sans-serif;
-// }
-// html {
-//   font-family: "Cairo", sans-serif;
-//   font-size: 18px;
-//   word-spacing: 1px;
-//   font-size: 100%;
-//   -ms-text-size-adjust: 100%;
-//   -webkit-text-size-adjust: 100%;
-//   -moz-osx-font-smoothing: grayscale;
-//   -webkit-font-smoothing: antialiased;
-//   box-sizing: border-box;
-// }
-// h1,
-// h2,
-// h3,
-// h4,
-// h5,
-// h6,
-// .text-heading-1,
-// .text-heading-2,
-// .text-heading-3,
-// .text-heading-4,
-// .text-heading-5,
-// .text-h1,
-// .text-h2,
-// .text-h3,
-// .text-h4,
-// .text-h5,
-// .text-h6,
-// .text-heading-6,
-// .text-subtitle-1,
-// .text-subtitle-2,
-// .text-subtitle-3 {
-//   font-family: "Cairo", sans-serif !important;
-// }
+// font
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo/Cairo-Regular.ttf");
+  font-weight: 250;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo/Cairo-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo/Cairo-BoldItalic.ttf");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo/Cairo-LightItalic.ttf");
+  font-weight: light;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo/Cairo-Light.ttf");
+  font-weight: light;
+  font-style: normal;
+}
+html,
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+li,
+button,
+div {
+  font-family: "Cairo", sans-serif;
+}
+html {
+  font-family: "Cairo", sans-serif;
+  font-size: 18px;
+  word-spacing: 1px;
+  font-size: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.cairo-font,
+.title,
+.text-heading-1,
+.text-heading-2,
+.text-heading-3,
+.text-heading-4,
+.text-heading-5,
+.text-h1,
+.text-h2,
+.text-h3,
+.text-h4,
+.text-h5,
+.text-h6,
+.text-heading-6,
+.text-subtitle-1,
+.text-subtitle-2,
+.text-subtitle-3 {
+  font-family: "Cairo", sans-serif !important;
+}
 .v-btn {
   letter-spacing: 0 !important;
 }

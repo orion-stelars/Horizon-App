@@ -130,7 +130,7 @@
                     <v-skeleton-loader type="list-item" width="100%" />
                   </td>
                   <td v-else>
-                    <v-tooltip bottom>
+                    <v-tooltip bottom color="info">
                       <template v-slot:activator="{ on, attrs }">
                         <span v-bind="attrs" v-on="on">
                           {{ $moment(props.item.created_at).fromNow() }}
@@ -156,9 +156,9 @@
                           </b>
                         </span>
                       </template>
-                      {{
+                      <b>{{
                         $moment(props.item.created_at).format("D/M/YYYY h:m A")
-                      }}
+                      }}</b>
                       <b
                         v-if="
                           props.item.actions &&
@@ -166,9 +166,9 @@
                               a => a.name === 'scheduled'
                             ).length
                         "
-                        class="info--text"
+                        class="black--text"
                       >
-                        <v-icon color="info">mdi-clock-outline</v-icon>
+                        <v-icon color="black">mdi-clock-outline</v-icon>
                         {{ $t("Scheduled To Be") }}
                         {{
                           $moment(
