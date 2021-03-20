@@ -7,6 +7,16 @@ module.exports = {
       fallbackLocale: "en",
       localeDir: "locales",
       enableInSFC: true
+    },
+    electronBuilder: {
+      builderOptions: {
+        win: {
+          icon: "./assets/icons/icon.ico"
+        },
+        mac: {
+          icon: "./assets/icons/icon.ico"
+        }
+      }
     }
   }
 };
