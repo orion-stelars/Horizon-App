@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/mamr-moussa/bmeet/compare/v1.2.0...v1.3.0) (2021-03-20)
+
+
+### Features
+
+* **Packaging:** add favico ([617b6b0](https://github.com/mamr-moussa/bmeet/commit/617b6b0e70f5a9fb067db2e0c4daff47227a907b))
+
+
+### Bug Fixes
+
+* **Packaging:** edit favico url ([1742609](https://github.com/mamr-moussa/bmeet/commit/174260995b88797f5bf03a0bdc9cdfd125d09383))
+* **Routing:** fix routing in production mode ([92cb6e1](https://github.com/mamr-moussa/bmeet/commit/92cb6e19f6fbb9f15d3cf5574a363a21dffca929))
+
 ## [1.2.0](https://github.com/mamr-moussa/bmeet/compare/v1.1.2...v1.2.0) (2021-03-20)
 
 
