@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/mamr-moussa/bmeet/compare/v1.1.2...v1.2.0) (2021-03-20)
+
+
+### Features
+
+* **Packaging:** better naming ([ceffb39](https://github.com/mamr-moussa/bmeet/commit/ceffb3986cd5c6a9b5e8c584c66d3b349c519c3a))
+
 ### [1.1.2](https://github.com/mamr-moussa/bmeet/compare/v0.1.2...v1.1.2) (2021-03-19)
 
 ### [0.1.2](https://github.com/mamr-moussa/bmeet/compare/v0.1.1...v0.1.2) (2021-03-19)

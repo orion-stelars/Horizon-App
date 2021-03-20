@@ -1,6 +1,6 @@
 {
-  "name": "dapp",
-  "version": "1.1.2",
+  "name": "Horizon",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
