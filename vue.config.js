@@ -11,10 +11,10 @@ module.exports = {
     electronBuilder: {
       builderOptions: {
         win: {
-          icon: "./assets/icons/icon.ico"
+          icon: "./assets/icons/win/icon.ico"
         },
         mac: {
-          icon: "./assets/icons/icon.ico"
+          icon: "./assets/icons/mac/icon.ico"
         }
       }
     }
