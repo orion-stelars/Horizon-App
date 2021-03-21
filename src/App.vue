@@ -277,11 +277,10 @@ export default {
       remote.getCurrentWindow().minimize();
     },
     maximize() {
-      const win = remote.getCurrentWindow();
-      if (win.isFullScreen()) {
-        win.setFullScreen(true);
+      if (remote.getCurrentWindow().isFullScreen()) {
+        remote.getCurrentWindow().setFullScreen(false);
       } else {
-        win.setFullScreen(false);
+        remote.getCurrentWindow().setFullScreen(true);
       }
     },
     close() {

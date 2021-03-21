@@ -13,8 +13,9 @@ protocol.registerSchemesAsPrivileged([
 async function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1000,
+    height: 800,
+    fullscreen: true,
     icon: "./assets/icons/win/icon.ico",
     frame: false,
     webPreferences: {
@@ -40,9 +41,9 @@ async function createWindow() {
 app.on("window-all-closed", () => {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
-  // if (process.platform !== "darwin") {
-  app.quit();
-  // }
+  if (process.platform !== "darwin") {
+    app.quit();
+  }
 });
 
 app.on("activate", () => {
