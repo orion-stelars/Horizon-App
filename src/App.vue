@@ -5,9 +5,14 @@
       <v-icon class="titlebar-icon warning mx-1" @click="minimize"
         >mdi-minus</v-icon
       >
-      <v-icon class="titlebar-icon success" @click="maximize"
+      <v-icon
+        class="titlebar-icon success"
+        @click="maximize"
+        style="cursor: pointer !important"
         >mdi-arrow-expand</v-icon
       >
+      <v-spacer />
+      <b style="direction: ltr">Horizon</b>
     </v-app-bar>
     <v-app-bar app color="primary darken-3" dark style="margin-top: 30px">
       <div class="d-flex align-center">
@@ -307,6 +312,14 @@ export default {
   }
 </i18n>
 <style lang="scss">
+.titlebar {
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}
+
+.titlebar-button {
+  -webkit-app-region: no-drag;
+}
 // font
 @font-face {
   font-family: "Cairo";
@@ -397,6 +410,6 @@ h6,
   width: 20px;
   border-radius: 50%;
   font-size: 15px !important;
-  cursor: pointer;
+  cursor: pointer !important;
 }
 </style>
