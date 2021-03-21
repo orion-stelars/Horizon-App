@@ -24,8 +24,8 @@
                   style="font-weight: 200; font-size: 50px; direction: ltr; color: #30E9B7"
                   class="px-3 text-center py-10 animated fadeIn"
                 >
-                  <span v-if="frame">{{ frame }}</span>
-                  <span v-else> </span>
+                  <span v-if="frame" class="animated fadeIn">{{ frame }}</span>
+                  <br v-else />
                 </p>
               </v-col>
             </v-row>
@@ -56,9 +56,13 @@ export default {
         this.frame = "Presents";
         setTimeout(() => {
           this.src = "/horizon.png";
-          this.frame = "Horizon";
+          this.frame = null;
+          setTimeout(() => {
+            this.frame = "Horizon";
+          }, 200);
           setTimeout(() => {
             this.showDialog = false;
+            this.$emit("hide");
           }, 3000);
         }, 1700);
       }, 3000);

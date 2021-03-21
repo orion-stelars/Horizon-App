@@ -1,6 +1,15 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary darken-3" dark>
+    <v-app-bar app color="primary darken-3" dark height="30">
+      <v-icon class="titlebar-icon red" @click="close">mdi-close</v-icon>
+      <v-icon class="titlebar-icon warning mx-1" @click="minimize"
+        >mdi-minus</v-icon
+      >
+      <v-icon class="titlebar-icon success" @click="maximize"
+        >mdi-arrow-expand</v-icon
+      >
+    </v-app-bar>
+    <v-app-bar app color="primary darken-3" dark style="margin-top: 30px">
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
@@ -19,9 +28,9 @@
     </v-app-bar>
 
     <v-main>
-      <host v-model="host" />
-      <welcome-dialog />
-      <router-view v-if="host" />
+      <host v-model="host" v-if="welcomed" />
+      <welcome-dialog @hide="welcomed = true" />
+      <router-view v-if="host" class="animated fadeIn" />
       <v-container v-if="host && $socket.connected && auth">
         <v-row justify="end">
           <v-col cols="12" lg="3" md="4">
@@ -51,6 +60,12 @@
             </v-col>
             <v-col cols="auto">
               <v-icon>mdi-moon-waning-crescent</v-icon>
+            </v-col>
+            <v-col cols="auto">
+              <v-btn outlined @click="$root.$emit('host-dialog')">
+                <v-icon class="mx-1">mdi-server</v-icon>
+                {{ $t("Host") }}
+              </v-btn>
             </v-col>
           </v-row>
         </v-col>
@@ -169,6 +184,7 @@
 </template>
 
 <script>
+const remote = require("electron").remote;
 import Auth from "@/components/Auth";
 import Host from "@/components/Host";
 import WelcomeDialog from "@/components/WelcomeDialog";
@@ -187,7 +203,9 @@ export default {
 
   data() {
     return {
+      remote,
       pack,
+      welcomed: false,
       langs: [
         { key: "en", label: "English", rtl: false, moment: "en" },
         { key: "ar", label: "العربية", rtl: true, moment: "ar-sa" }
@@ -252,6 +270,22 @@ export default {
     },
     connectedUsers() {
       return Object.values(this.activeUsers);
+    }
+  },
+  methods: {
+    minimize() {
+      remote.getCurrentWindow().minimize();
+    },
+    maximize() {
+      const win = remote.getCurrentWindow();
+      if (win.isFullScreen()) {
+        win.setFullScreen(true);
+      } else {
+        win.setFullScreen(false);
+      }
+    },
+    close() {
+      remote.getCurrentWindow().close();
     }
   }
 };
@@ -358,5 +392,12 @@ h6,
 }
 .v-btn {
   letter-spacing: 0 !important;
+}
+.titlebar-icon {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  font-size: 15px !important;
+  cursor: pointer;
 }
 </style>

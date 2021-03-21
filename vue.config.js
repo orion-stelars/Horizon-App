@@ -9,6 +9,11 @@ module.exports = {
       enableInSFC: true
     },
     electronBuilder: {
+      nodeIntegration: true,
+      chainWebpackRendererProcess(config) {
+        config.plugins.delete("workbox");
+        config.plugins.delete("pwa");
+      },
       builderOptions: {
         win: {
           icon: "./icon.ico"
