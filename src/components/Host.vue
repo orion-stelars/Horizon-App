@@ -1,5 +1,5 @@
 <template>
-  <v-dialog :value="!host" width="700" persistent>
+  <v-dialog v-model="showDialog" width="700" :persistent="persistent">
     <v-card>
       <v-card-title>
         {{ $t("Host") }}
@@ -11,7 +11,7 @@
               <v-text-field
                 v-model="input"
                 :rules="[v => !!v || '']"
-                :placeholder="`${$t('Server')} ${$t('Address')}`"
+                :placeholder="$t('Server Address')"
                 append-icon="mdi-server"
                 outlined
                 @keydown.enter="submit"
@@ -33,24 +33,39 @@
 export default {
   name: "Host",
   mounted() {
-    this.getHost();
+    this.getHost(true);
+    this.$root.$on("host-dialog", () => {
+      this.showDialog = true;
+      if (this.host) this.persistent = false;
+    });
   },
   data() {
     return {
       host: null,
       input: "",
       isValid: false,
-      isLoading: false
+      isLoading: false,
+      showDialog: false,
+      persistent: true
     };
   },
   watch: {
     host(val) {
       this.$emit("input", val);
+      this.input = val;
+      if (!val) {
+        this.showDialog = true;
+        this.persistent = true;
+      }
     }
   },
   methods: {
-    getHost() {
+    getHost(mount = false) {
       this.host = localStorage.getItem("host");
+      if (mount && !this.host) {
+        this.showDialog = true;
+        this.persistent = true;
+      }
     },
     submit() {
       // is loading
@@ -73,14 +88,10 @@ export default {
 <i18n>
   {
     "en": {
-      "Host": "Host",
-      "Address": "Address",
-      "Server": "Server"
+      "Server Address": "Server Address"
     },
     "ar": {
-      "Host": "بيانات المضيف",
-      "Address": "عنوان",
-      "Server": "الخدم"
+      "Server Address": "عنوان الخادم"
     }
   }
 </i18n>

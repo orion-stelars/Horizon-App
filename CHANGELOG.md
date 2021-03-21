@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/mamr-moussa/bmeet/compare/v1.4.0...v1.4.1) (2021-03-21)
+
+
+### Bug Fixes
+
+* add draggable body ([5d81cc4](https://github.com/mamr-moussa/bmeet/commit/5d81cc45f976a5e6a1ab4d48516c2f58876902b4))
+
+## [1.4.0](https://github.com/mamr-moussa/bmeet/compare/v1.3.0...v1.4.0) (2021-03-21)
+
+
+### Features
+
+* add smart controls ([731423a](https://github.com/mamr-moussa/bmeet/commit/731423a4a33bd438090deb6e327110a422d6b587))
+* add welcome message ([a72b197](https://github.com/mamr-moussa/bmeet/commit/a72b197eef952ec079a1e37c96577ef4ec4b2fc6))
+
+
+### Bug Fixes
+
+* remove menu bar ([ce3610c](https://github.com/mamr-moussa/bmeet/commit/ce3610c83d4b5ae94acbfe77ab19e40fb5d5dfb0))
+
 ## [1.3.0](https://github.com/mamr-moussa/bmeet/compare/v1.2.0...v1.3.0) (2021-03-20)
 
 

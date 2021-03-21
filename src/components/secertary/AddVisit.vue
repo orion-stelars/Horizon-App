@@ -5,13 +5,13 @@
       <v-icon>mdi-plus</v-icon>
     </v-btn>
     <v-dialog v-model="showDialog" closable width="700">
-      <v-card>
+      <v-card style="overflow-y: hidden">
         <v-card-title>{{ $t("Add Visit") }}</v-card-title>
         <v-card-text>
           <v-form
             ref="formRef"
             v-model="isValid"
-            style="max-height: 70vh; overflow-y: auto"
+            style="max-height: 70vh; overflow-y: auto; overflow-x: hidden"
           >
             <v-card
               v-for="(visitor, v) in input.visitor"

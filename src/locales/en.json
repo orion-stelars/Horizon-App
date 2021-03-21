@@ -52,5 +52,10 @@
 "read more": "Read More",
   "i agree": "I Agree",
   "Invalid email or password": "Invalid email or password",
-  "somethingWrong": "Something went wrong, please try again later."
+  "somethingWrong": "Something went wrong, please try again later.",
+  "Visit Us": "Visit Us",
+  "About Us": "About Us",
+  "Our Projects": "Our Projects",
+  "Contact Us": "Contact Us",
+  "Host": "Host"
 }
