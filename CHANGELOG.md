@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/mamr-moussa/bmeet/compare/v1.4.1...v1.4.2) (2021-03-21)
+
+
+### Bug Fixes
+
+* remove drag ([9d4c65f](https://github.com/mamr-moussa/bmeet/commit/9d4c65fea4be3155f2483b239fe9e622a04fe085))
+
 ### [1.4.1](https://github.com/mamr-moussa/bmeet/compare/v1.4.0...v1.4.1) (2021-03-21)
 
 
