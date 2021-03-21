@@ -20,6 +20,7 @@
 
     <v-main>
       <host v-model="host" />
+      <welcome-dialog />
       <router-view v-if="host" />
       <v-container v-if="host && $socket.connected && auth">
         <v-row justify="end">
@@ -70,13 +71,89 @@
         <v-divider />
       </div>
       <v-row justify="center" align="center">
-        <v-col cols="auto" class="mt-10">
-          <v-avatar size="55">
-            <v-img src="/orion-logo.png" />
-          </v-avatar>
-          <span style="font-weight: bold; font-size: 20px" class="px-3">{{
-            $t("Orion Software Solutions")
-          }}</span>
+        <v-col cols="12" lg="6">
+          <v-row justify="center" class="pt-5">
+            <v-col cols="auto" class="mb-0 pb-0">
+              <v-avatar size="150">
+                <v-img src="/horizon.png" />
+              </v-avatar>
+            </v-col>
+          </v-row>
+          <v-row justify="center" class="pt-0">
+            <v-col cols="auto" class="mb-0 pb-0">
+              <p
+                style="font-weight: 200; font-size: 40px; font-family: monospace; direction: ltr; color: #FC9C8F"
+                class="px-3 text-center pa-0 ma-0"
+              >
+                Horizon&copy;
+              </p>
+            </v-col>
+          </v-row>
+          <v-row justify="center" class="pt-0">
+            <v-col cols="auto" class="mb-0 pb-0">
+              <v-chip
+                color="#30E9B6"
+                style="color: #162238; font-weight: bold; direction: ltr"
+              >
+                <v-icon>
+                  mdi-label
+                </v-icon>
+                V{{ pack.version }}
+              </v-chip>
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-col cols="auto" lg="6" class="mt-2">
+          <v-row>
+            <v-col cols="12">
+              <v-avatar size="55">
+                <v-img src="/orion-logo.png" />
+              </v-avatar>
+              <span style="font-weight: bold; font-size: 20px" class="px-3">{{
+                $t("Orion Software Solutions")
+              }}</span>
+            </v-col>
+            <v-col cols="12">
+              <v-list color="primary darken-3">
+                <v-list-item>
+                  <v-btn text href="https://orionstelars.com" target="_blank">
+                    <v-icon class="px-2">mdi-web</v-icon>
+                    {{ $t("Visit Us") }}
+                  </v-btn>
+                </v-list-item>
+                <v-list-item>
+                  <v-btn
+                    text
+                    href="https://orionstelars.com/projects"
+                    target="_blank"
+                  >
+                    <v-icon class="px-2">mdi-atom</v-icon>
+                    {{ $t("Our Projects") }}
+                  </v-btn>
+                </v-list-item>
+                <v-list-item>
+                  <v-btn
+                    text
+                    href="https://orionstelars.com/about"
+                    target="_blank"
+                  >
+                    <v-icon class="px-2">mdi-information-outline</v-icon>
+                    {{ $t("About Us") }}
+                  </v-btn>
+                </v-list-item>
+                <v-list-item>
+                  <v-btn
+                    text
+                    href="https://orionstelars.com/amr-moussa"
+                    target="_blank"
+                  >
+                    <v-icon class="px-2">mdi-phone</v-icon>
+                    {{ $t("Contact Us") }}
+                  </v-btn>
+                </v-list-item>
+              </v-list>
+            </v-col>
+          </v-row>
         </v-col>
         <v-col cols="12" class="pt-5">
           <p class="grey--text text--lighten-1 text-center">
@@ -94,6 +171,8 @@
 <script>
 import Auth from "@/components/Auth";
 import Host from "@/components/Host";
+import WelcomeDialog from "@/components/WelcomeDialog";
+import pack from "@/../package";
 import Notifications from "@/components/common/notifications";
 const defaultLang = process.env.VUE_APP_I18N_LOCALE;
 export default {
@@ -102,11 +181,13 @@ export default {
   components: {
     Auth,
     Notifications,
+    WelcomeDialog,
     Host
   },
 
   data() {
     return {
+      pack,
       langs: [
         { key: "en", label: "English", rtl: false, moment: "en" },
         { key: "ar", label: "العربية", rtl: true, moment: "ar-sa" }
