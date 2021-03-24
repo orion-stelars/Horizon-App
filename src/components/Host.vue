@@ -78,7 +78,10 @@ export default {
       }
       localStorage.setItem("host", this.input);
       this.isLoading = false;
-      window.location.href = "/";
+      window
+        .require("electron")
+        .remote.getCurrentWindow()
+        .reload();
     }
   }
 };
